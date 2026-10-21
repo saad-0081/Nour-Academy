@@ -18,4 +18,3 @@ Portail web interactif et responsive (Mobile First) pour les parents afin de con
 - Approche **Mobile First** testée sur différents formats d'écrans.
 - Respect de la séparation des préoccupations (fichiers HTML, CSS et JS indépendants)[cite: 4].
 
-## 👨‍💻 Auteur

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let cart = [];
+    let cart = JSON.parse(localStorage.getItem('nour_cart')) || [];
 
     const selectionList = document.getElementById('selection-list');
     const totalPriceEl = document.getElementById('total-price');
@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const summaryDetails = document.getElementById('summary-details');
     const resetAppBtn = document.getElementById('reset-app-btn');
 
+    updateCartUI();
+
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const card = e.target.closest('.course-card');
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!cart.some(item => item.id === id)) {
                 cart.push({ id, title, price });
+                localStorage.setItem('nour_cart', JSON.stringify(cart));
                 updateCartUI();
 
                 button.textContent = "Ajouté ✓";
@@ -36,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.removeFromCart = function(id) {
         cart = cart.filter(item => item.id !== id);
+        localStorage.setItem('nour_cart', JSON.stringify(cart));
         updateCartUI();
     };
 
@@ -105,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetAppBtn.addEventListener('click', () => {
         cart = [];
+        localStorage.removeItem('nour_cart');
         updateCartUI();
         registrationForm.reset();
         registrationForm.classList.remove('hidden');

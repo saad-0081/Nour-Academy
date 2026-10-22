@@ -100,6 +100,9 @@ a {
     color: var(--color-accent-dark);
 }
 
+
+/* ===== Boutons ===== */
+
 .button {
     display: inline-flex;
     align-items: center;
@@ -193,6 +196,9 @@ a {
     text-decoration: underline;
 }
 
+
+/* ===== Hero ===== */
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -219,6 +225,9 @@ a {
     color: #e3eee8;
 }
 
+
+/* ===== Catalogue ===== */
+
 .catalog {
     max-width: 1200px;
     margin-inline: auto;
@@ -230,10 +239,76 @@ a {
     color: var(--color-muted);
 }
 
-.results-count {
-    margin-top: 16px;
-    font-weight: 600;
+
+/* ===== Filtres (US2) ===== */
+
+.catalog-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 16px;
+    background: #e6f0fb;
+    border-radius: var(--radius-card);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.field select {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+}
+
+.field select:focus {
+    border-color: var(--color-primary);
+    outline: 2px solid var(--color-primary);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.button-outline {
     color: var(--color-primary);
+    background: var(--color-surface);
+    border: 2px solid var(--color-primary);
+}
+
+.button-outline:hover {
+    background: var(--color-badge-bg);
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 32px 20px;
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+}
+
+.empty-state p {
+    color: var(--color-muted);
 }
 
 .course-grid {
@@ -321,6 +396,9 @@ a {
     background: var(--color-primary);
 }
 
+
+/* ===== Tablette : 2 colonnes ===== */
+
 @media (min-width: 769px) {
     h1 {
         font-size: 2.5rem;
@@ -332,6 +410,13 @@ a {
         margin-inline: 24px;
         padding: 40px;
     }
+    .catalog-toolbar {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    .catalog-toolbar .field {
+        flex: 1;
+    }
     .course-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
@@ -342,6 +427,9 @@ a {
         padding-inline: 32px;
     }
 }
+
+
+/* ===== Desktop : 3 colonnes ===== */
 
 @media (min-width: 1024px) {
     h1 {
@@ -355,4 +443,100 @@ a {
     .course-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+
+/* ===== Filtrage sans JavaScript (US2) ===== */
+
+.results {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-grid {
+    counter-reset: visible;
+}
+
+.course-card {
+    counter-increment: visible;
+}
+
+
+/* une carte masquée (display:none) n'est pas comptée */
+
+.results-count {
+    order: -1;
+    margin-top: 16px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.results-count::before {
+    content: "Résultats : " counter(visible);
+}
+
+.empty-state {
+    display: none;
+}
+
+
+/* Un filtre actif masque les cartes qui ne correspondent pas ; les deux filtres se combinent */
+
+.catalog:has(#filter-level option[value="Primaire"]:checked) .course-card:not([data-level="Primaire"]) {
+    display: none;
+}
+
+.catalog:has(#filter-level option[value="Collège"]:checked) .course-card:not([data-level="Collège"]) {
+    display: none;
+}
+
+.catalog:has(#filter-level option[value="Tronc commun"]:checked) .course-card:not([data-level="Tronc commun"]) {
+    display: none;
+}
+
+.catalog:has(#filter-level option[value="1er Bac"]:checked) .course-card:not([data-level="1er Bac"]) {
+    display: none;
+}
+
+.catalog:has(#filter-level option[value="2e Bac"]:checked) .course-card:not([data-level="2e Bac"]) {
+    display: none;
+}
+
+.catalog:has(#filter-subject option[value="Mathématiques"]:checked) .course-card:not([data-subject="Mathématiques"]) {
+    display: none;
+}
+
+.catalog:has(#filter-subject option[value="Physique-Chimie"]:checked) .course-card:not([data-subject="Physique-Chimie"]) {
+    display: none;
+}
+
+.catalog:has(#filter-subject option[value="Français"]:checked) .course-card:not([data-subject="Français"]) {
+    display: none;
+}
+
+.catalog:has(#filter-subject option[value="Anglais"]:checked) .course-card:not([data-subject="Anglais"]) {
+    display: none;
+}
+
+.catalog:has(#filter-subject option[value="Arabe"]:checked) .course-card:not([data-subject="Arabe"]) {
+    display: none;
+}
+
+
+/* Message « aucun cours » pour les combinaisons sans résultat (générées depuis le tableau des cours) */
+
+.catalog:has(#filter-level option[value="Primaire"]:checked):has(#filter-subject option[value="Physique-Chimie"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="Primaire"]:checked):has(#filter-subject option[value="Anglais"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="Collège"]:checked):has(#filter-subject option[value="Français"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="Collège"]:checked):has(#filter-subject option[value="Arabe"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="Tronc commun"]:checked):has(#filter-subject option[value="Physique-Chimie"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="Tronc commun"]:checked):has(#filter-subject option[value="Français"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="Tronc commun"]:checked):has(#filter-subject option[value="Arabe"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="1er Bac"]:checked):has(#filter-subject option[value="Mathématiques"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="1er Bac"]:checked):has(#filter-subject option[value="Anglais"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="1er Bac"]:checked):has(#filter-subject option[value="Arabe"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="2e Bac"]:checked):has(#filter-subject option[value="Français"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="2e Bac"]:checked):has(#filter-subject option[value="Anglais"]:checked) .empty-state,
+.catalog:has(#filter-level option[value="2e Bac"]:checked):has(#filter-subject option[value="Arabe"]:checked) .empty-state {
+    display: flex;
 }

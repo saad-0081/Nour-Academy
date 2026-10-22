@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
 
     const selectionList = document.getElementById('selection-list');
+ 9-us3-gestion-du-panier-de-sélection-des-cours
+
     const emptySelection = document.getElementById('empty-selection');
+ main
     const totalPriceEl = document.getElementById('total-price');
     const cartBadge = document.getElementById('cart-badge');
     const itemCount = document.getElementById('item-count');
@@ -10,6 +13,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const registrationForm = document.getElementById('registration-form');
     const successMessage = document.getElementById('success-message');
 
+ 9-us3-gestion-du-panier-de-sélection-des-cours
+    const filterLevel = document.getElementById('filter-level');
+    const filterSubject = document.getElementById('filter-subject');
+    const filterCenter = document.getElementById('filter-center');
+    const resetFiltersBtn = document.getElementById('reset-filters');
+    const courseCards = document.querySelectorAll('.course-card');
+    const resultsCount = document.getElementById('results-count');
+
+    function filterCourses() {
+        const selectedLevel = filterLevel.value;
+        const selectedSubject = filterSubject.value;
+        const selectedCenter = filterCenter.value;
+        let visibleCount = 0;
+
+        courseCards.forEach(card => {
+            const cardLevel = card.dataset.level;
+            const cardSubject = card.dataset.subject;
+            const cardCenter = card.dataset.center;
+
+            const matchesLevel = !selectedLevel || cardLevel === selectedLevel;
+            const matchesSubject = !selectedSubject || cardSubject === selectedSubject;
+            const matchesCenter = !selectedCenter || cardCenter === selectedCenter;
+
+            if (matchesLevel && matchesSubject && matchesCenter) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        resultsCount.textContent = `${visibleCount} cours trouvé(s)`;
+    }
+
+    filterLevel.addEventListener('change', filterCourses);
+    filterSubject.addEventListener('change', filterCourses);
+    filterCenter.addEventListener('change', filterCourses);
+
+    resetFiltersBtn.addEventListener('click', () => {
+        filterLevel.value = '';
+        filterSubject.value = '';
+        filterCenter.value = '';
+        filterCourses();
+    });
+
+ main
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const card = e.target.closest('.course-card');

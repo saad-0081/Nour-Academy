@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
 
     const selectionList = document.getElementById('selection-list');
+ 9-us3-gestion-du-panier-de-sélection-des-cours
+
+    const emptySelection = document.getElementById('empty-selection');
+ main
     const totalPriceEl = document.getElementById('total-price');
     const cartBadge = document.getElementById('cart-badge');
     const itemCount = document.getElementById('item-count');
@@ -9,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const registrationForm = document.getElementById('registration-form');
     const successMessage = document.getElementById('success-message');
 
+ 9-us3-gestion-du-panier-de-sélection-des-cours
     const filterLevel = document.getElementById('filter-level');
     const filterSubject = document.getElementById('filter-subject');
     const filterCenter = document.getElementById('filter-center');
@@ -53,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filterCourses();
     });
 
+ main
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const card = e.target.closest('.course-card');

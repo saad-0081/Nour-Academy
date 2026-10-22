@@ -1,0 +1,358 @@
+/* ===== Charte graphique ===== */
+
+:root {
+    --color-primary: #174c3c;
+    --color-primary-dark: #0f3a2d;
+    --color-accent: #e8b95b;
+    --color-accent-dark: #8a6414;
+    --color-bg: #f7f8f4;
+    --color-surface: #ffffff;
+    --color-text: #202b27;
+    --color-muted: #5b6661;
+    --color-on-dark: #ffffff;
+    --color-success: #1e7d45;
+    --color-warning: #b45309;
+    --color-error: #c62828;
+    --color-disabled-bg: #e3e5e1;
+    --color-disabled-text: #6b7370;
+    --color-border: #dde3dc;
+    --color-badge-bg: #d9eee2;
+    --font-title: "Poppins", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --radius-button: 12px;
+    --radius-card: 16px;
+    --shadow-card: 0 4px 16px rgba(23, 76, 60, 0.1);
+}
+
+
+/* ===== Base (mobile first) ===== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 100;
+    padding: 12px 16px;
+    color: #fff;
+    background: var(--color-primary);
+    border-radius: var(--radius-button);
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
+.eyebrow {
+    margin-bottom: 8px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent-dark);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 0;
+    border-radius: var(--radius-button);
+    cursor: pointer;
+}
+
+.button-primary {
+    color: var(--color-on-dark);
+    background: var(--color-primary);
+}
+
+.button-primary:hover {
+    background: var(--color-primary-dark);
+}
+
+.button-accent {
+    color: var(--color-text);
+    background: var(--color-accent);
+}
+
+.button:disabled {
+    color: var(--color-disabled-text);
+    background: var(--color-disabled-bg);
+    cursor: not-allowed;
+}
+
+
+/* ===== Header ===== */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 16px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    text-decoration: none;
+}
+
+.logo-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-primary);
+    border-radius: 10px;
+}
+
+.logo-text {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.logo-text span {
+    color: var(--color-accent-dark);
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 16px;
+    padding: 24px;
+    color: var(--color-on-dark);
+    background: var(--color-primary);
+    border-radius: 20px;
+}
+
+.hero .eyebrow {
+    margin: 0;
+    color: var(--color-accent);
+}
+
+.hero h1 {
+    color: var(--color-on-dark);
+}
+
+.hero-description {
+    max-width: 52ch;
+    color: #e3eee8;
+}
+
+.catalog {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 48px 16px;
+}
+
+.section-description {
+    margin-top: 8px;
+    color: var(--color-muted);
+}
+
+.results-count {
+    margin-top: 16px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.course-level {
+    align-self: flex-start;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: var(--color-badge-bg);
+    border-radius: 999px;
+}
+
+.course-info {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+}
+
+.course-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.course-seats {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.course-seats::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.seats-ok {
+    color: var(--color-success);
+}
+
+.seats-low {
+    color: var(--color-warning);
+}
+
+.seats-full {
+    color: var(--color-error);
+}
+
+.course-button {
+    width: 100%;
+    margin-top: auto;
+}
+
+
+/* ===== Footer ===== */
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 16px;
+    font-size: 0.875rem;
+    color: #cfe3da;
+    background: var(--color-primary);
+}
+
+@media (min-width: 769px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .site-header {
+        padding-inline: 32px;
+    }
+    .hero {
+        margin-inline: 24px;
+        padding: 40px;
+    }
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .site-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-inline: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 2.75rem;
+    }
+    .hero {
+        max-width: 1200px;
+        margin-inline: auto;
+        padding: 56px;
+    }
+    .course-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

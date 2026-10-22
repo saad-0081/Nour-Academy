@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Découvrez les cours de soutien scolaire et de langues de Nour Academy à Nador."
+    />
+    <title>Nour Academy | Soutien scolaire à Nador</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23174C3C'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23E8B95B' font-family='Arial' font-weight='700'%3EN%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <a class="logo" href="index.html" aria-label="Nour Academy, accueil">
+        <span class="logo-mark" aria-hidden="true">N</span>
+        <span class="logo-text">Nour <span>Academy</span></span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a class="nav-link" href="#cours">Nos cours</a>
+      </nav>
+    </header>
+    <main id="contenu">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Soutien scolaire et langues à Nador</p>
+        <h1 id="hero-title">La réussite commence ici.</h1>
+        <p class="hero-description">
+          Trouvez le cours adapté au niveau et aux besoins de votre enfant, du
+          primaire au Bac.
+        </p>
+        <a class="button button-accent" href="#cours">Découvrir les cours</a>
+      </section>
+      <section class="catalog" id="cours" aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Trouvez le cours idéal</h2>
+        <p class="section-description">
+          Consultez les matières, les niveaux, les horaires et les tarifs.
+        </p>
+        <p class="results-count" id="results-count" aria-live="polite">
+          Chargement des cours…
+        </p>
+        <div class="course-grid" id="course-list" aria-busy="true"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Nador, Maroc · Nador Centre · Hay Al Matar · Selouane</p>
+      <p>© 2026 Nour Academy. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

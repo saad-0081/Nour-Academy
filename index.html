@@ -3,17 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Découvrez les cours de soutien scolaire et de langues de Nour Academy à Nador."
-    />
+    <meta name="description" content="Découvrez les cours de soutien scolaire et de langues de Nour Academy à Nador." />
     <title>Nour Academy | Soutien scolaire à Nador</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23174C3C'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23E8B95B' font-family='Arial' font-weight='700'%3EN%3C/text%3E%3C/svg%3E"
-    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23174C3C'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23E8B95B' font-family='Arial' font-weight='700'%3EN%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -31,24 +24,159 @@
       <section class="hero" aria-labelledby="hero-title">
         <p class="eyebrow">Soutien scolaire et langues à Nador</p>
         <h1 id="hero-title">La réussite commence ici.</h1>
-        <p class="hero-description">
-          Trouvez le cours adapté au niveau et aux besoins de votre enfant, du
-          primaire au Bac.
-        </p>
+        <p class="hero-description">Trouvez le cours adapté au niveau et aux besoins de votre enfant, du primaire au Bac.</p>
         <a class="button button-accent" href="#cours">Découvrir les cours</a>
       </section>
       <section class="catalog" id="cours" aria-labelledby="catalog-title">
         <h2 id="catalog-title">Trouvez le cours idéal</h2>
-        <p class="section-description">
-          Consultez les matières, les niveaux, les horaires et les tarifs.
-        </p>
-        <p class="results-count" id="results-count" aria-live="polite">
-          Chargement des cours…
-        </p>
-        <div class="course-grid" id="course-list" aria-busy="true"></div>
+        <p class="section-description">Consultez les matières, les niveaux, les horaires et les tarifs.</p>
+        <form class="catalog-toolbar" id="filters" aria-label="Filtrer les cours">
+          <div class="field">
+            <label for="filter-level">Niveau</label>
+            <select id="filter-level" name="level">
+              <option value="">Tous les niveaux</option>
+              <option value="Primaire">Primaire</option>
+              <option value="Collège">Collège</option>
+              <option value="Tronc commun">Tronc commun</option>
+              <option value="1er Bac">1er Bac</option>
+              <option value="2e Bac">2e Bac</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-subject">Matière</label>
+            <select id="filter-subject" name="subject">
+              <option value="">Toutes les matières</option>
+              <option value="Mathématiques">Mathématiques</option>
+              <option value="Physique-Chimie">Physique-Chimie</option>
+              <option value="Français">Français</option>
+              <option value="Anglais">Anglais</option>
+              <option value="Arabe">Arabe</option>
+            </select>
+          </div>
+          <button class="button button-outline" type="reset">Réinitialiser</button>
+        </form>
+        <div class="results">
+          <div class="course-grid" id="course-list">
+          <article class="course-card" data-level="Primaire" data-subject="Mathématiques">
+            <p class="course-level">Primaire</p>
+            <h3 class="course-title">Mathématiques</h3>
+            <p class="course-info">Centre : Nador Centre</p>
+            <p class="course-info">Horaire : Lun. et Mer. · 17h</p>
+            <p class="course-price">250 MAD / mois</p>
+            <p class="course-seats seats-ok">8 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="Primaire" data-subject="Français">
+            <p class="course-level">Primaire</p>
+            <h3 class="course-title">Français</h3>
+            <p class="course-info">Centre : Hay Al Matar</p>
+            <p class="course-info">Horaire : Mar. et Jeu. · 16h</p>
+            <p class="course-price">220 MAD / mois</p>
+            <p class="course-seats seats-ok">6 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="Primaire" data-subject="Arabe">
+            <p class="course-level">Primaire</p>
+            <h3 class="course-title">Arabe</h3>
+            <p class="course-info">Centre : Selouane</p>
+            <p class="course-info">Horaire : Lun. et Mer. · 16h</p>
+            <p class="course-price">200 MAD / mois</p>
+            <p class="course-seats seats-full">Complet</p>
+            <button class="button button-primary course-button" type="button" disabled>Cours complet</button>
+          </article>
+          <article class="course-card" data-level="Collège" data-subject="Mathématiques">
+            <p class="course-level">Collège</p>
+            <h3 class="course-title">Mathématiques</h3>
+            <p class="course-info">Centre : Nador Centre</p>
+            <p class="course-info">Horaire : Lun. et Mer. · 18h</p>
+            <p class="course-price">300 MAD / mois</p>
+            <p class="course-seats seats-ok">5 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="Collège" data-subject="Physique-Chimie">
+            <p class="course-level">Collège</p>
+            <h3 class="course-title">Physique-Chimie</h3>
+            <p class="course-info">Centre : Hay Al Matar</p>
+            <p class="course-info">Horaire : Mar. et Jeu. · 18h</p>
+            <p class="course-price">320 MAD / mois</p>
+            <p class="course-seats seats-ok">7 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="Collège" data-subject="Anglais">
+            <p class="course-level">Collège</p>
+            <h3 class="course-title">Anglais</h3>
+            <p class="course-info">Centre : Selouane</p>
+            <p class="course-info">Horaire : Sam. · 10h</p>
+            <p class="course-price">280 MAD / mois</p>
+            <p class="course-seats seats-ok">4 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="Tronc commun" data-subject="Mathématiques">
+            <p class="course-level">Tronc commun</p>
+            <h3 class="course-title">Mathématiques</h3>
+            <p class="course-info">Centre : Nador Centre</p>
+            <p class="course-info">Horaire : Lun. et Mer. · 19h</p>
+            <p class="course-price">350 MAD / mois</p>
+            <p class="course-seats seats-ok">6 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="1er Bac" data-subject="Physique-Chimie">
+            <p class="course-level">1er Bac</p>
+            <h3 class="course-title">Physique-Chimie</h3>
+            <p class="course-info">Centre : Hay Al Matar</p>
+            <p class="course-info">Horaire : Mar. et Jeu. · 19h</p>
+            <p class="course-price">380 MAD / mois</p>
+            <p class="course-seats seats-low">3 dernières places</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="2e Bac" data-subject="Mathématiques">
+            <p class="course-level">2e Bac</p>
+            <h3 class="course-title">Mathématiques</h3>
+            <p class="course-info">Centre : Nador Centre</p>
+            <p class="course-info">Horaire : Lun. et Mer. · 20h</p>
+            <p class="course-price">450 MAD / mois</p>
+            <p class="course-seats seats-ok">5 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="2e Bac" data-subject="Physique-Chimie">
+            <p class="course-level">2e Bac</p>
+            <h3 class="course-title">Physique-Chimie</h3>
+            <p class="course-info">Centre : Selouane</p>
+            <p class="course-info">Horaire : Mar. et Jeu. · 20h</p>
+            <p class="course-price">420 MAD / mois</p>
+            <p class="course-seats seats-full">Complet</p>
+            <button class="button button-primary course-button" type="button" disabled>Cours complet</button>
+          </article>
+          <article class="course-card" data-level="Tronc commun" data-subject="Anglais">
+            <p class="course-level">Tronc commun</p>
+            <h3 class="course-title">Anglais intensif</h3>
+            <p class="course-info">Centre : Hay Al Matar</p>
+            <p class="course-info">Horaire : Sam. · 14h</p>
+            <p class="course-price">300 MAD / mois</p>
+            <p class="course-seats seats-ok">9 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          <article class="course-card" data-level="1er Bac" data-subject="Français">
+            <p class="course-level">1er Bac</p>
+            <h3 class="course-title">Français avancé</h3>
+            <p class="course-info">Centre : Nador Centre</p>
+            <p class="course-info">Horaire : Ven. · 17h</p>
+            <p class="course-price">320 MAD / mois</p>
+            <p class="course-seats seats-ok">4 places restantes</p>
+            <button class="button button-primary course-button" type="button">Choisir ce cours</button>
+          </article>
+          </div>
+
+          <!-- Compteur calculé par CSS (compteur de cartes visibles) -->
+          <p class="results-count" id="results-count"></p>
+
+          <div class="empty-state" id="empty-message">
+            <h3>Aucun cours ne correspond</h3>
+            <p>Essayez un autre niveau ou une autre matière, ou cliquez sur « Réinitialiser ».</p>
+          </div>
+        </div>
       </section>
     </main>
-
     <footer class="site-footer">
       <p>Nador, Maroc · Nador Centre · Hay Al Matar · Selouane</p>
       <p>© 2026 Nour Academy. Tous droits réservés.</p>

@@ -2,63 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
 
     const selectionList = document.getElementById('selection-list');
- 9-us3-gestion-du-panier-de-sélection-des-cours
-
-    const emptySelection = document.getElementById('empty-selection');
- main
     const totalPriceEl = document.getElementById('total-price');
     const cartBadge = document.getElementById('cart-badge');
     const itemCount = document.getElementById('item-count');
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const registrationForm = document.getElementById('registration-form');
-    const successMessage = document.getElementById('success-message');
+    const successCard = document.getElementById('success-card');
+    const summaryDetails = document.getElementById('summary-details');
+    const resetAppBtn = document.getElementById('reset-app-btn');
 
- 9-us3-gestion-du-panier-de-sélection-des-cours
-    const filterLevel = document.getElementById('filter-level');
-    const filterSubject = document.getElementById('filter-subject');
-    const filterCenter = document.getElementById('filter-center');
-    const resetFiltersBtn = document.getElementById('reset-filters');
-    const courseCards = document.querySelectorAll('.course-card');
-    const resultsCount = document.getElementById('results-count');
-
-    function filterCourses() {
-        const selectedLevel = filterLevel.value;
-        const selectedSubject = filterSubject.value;
-        const selectedCenter = filterCenter.value;
-        let visibleCount = 0;
-
-        courseCards.forEach(card => {
-            const cardLevel = card.dataset.level;
-            const cardSubject = card.dataset.subject;
-            const cardCenter = card.dataset.center;
-
-            const matchesLevel = !selectedLevel || cardLevel === selectedLevel;
-            const matchesSubject = !selectedSubject || cardSubject === selectedSubject;
-            const matchesCenter = !selectedCenter || cardCenter === selectedCenter;
-
-            if (matchesLevel && matchesSubject && matchesCenter) {
-                card.style.display = 'flex';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        resultsCount.textContent = `${visibleCount} cours trouvé(s)`;
-    }
-
-    filterLevel.addEventListener('change', filterCourses);
-    filterSubject.addEventListener('change', filterCourses);
-    filterCenter.addEventListener('change', filterCourses);
-
-    resetFiltersBtn.addEventListener('click', () => {
-        filterLevel.value = '';
-        filterSubject.value = '';
-        filterCenter.value = '';
-        filterCourses();
-    });
-
- main
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const card = e.target.closest('.course-card');
@@ -71,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCartUI();
 
                 button.textContent = "Ajouté ✓";
-                button.classList.add('bg-emerald-600', 'text-white');
+                button.classList.add('btn-added');
                 setTimeout(() => {
                     button.textContent = "Ajouter au panier";
-                    button.classList.remove('bg-emerald-600', 'text-white');
+                    button.classList.remove('btn-added');
                 }, 1200);
             } else {
                 alert("Ce cours est déjà présent dans votre sélection !");
@@ -93,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         itemCount.textContent = `${cart.length} cours`;
 
         if (cart.length === 0) {
-            selectionList.innerHTML = '<p id="empty-selection" class="text-sm text-gray-400 italic py-2">Aucun cours sélectionné. Veuillez choisir vos matières ci-dessous.</p>';
+            selectionList.innerHTML = '<p id="empty-selection" class="empty-text">Aucun cours sélectionné. Veuillez choisir vos matières ci-dessous.</p>';
             totalPriceEl.textContent = '0 MAD / mois';
             return;
         }
@@ -102,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             total += item.price;
             const itemEl = document.createElement('div');
-            itemEl.className = 'flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gray-50 rounded-2xl border border-gray-100 gap-4';
+            itemEl.className = 'cart-item';
             itemEl.innerHTML = `
         <div>
-          <h3 class="font-bold text-sm text-[#1B3022]">${item.title}</h3>
+          <span class="cart-item-title">${item.title}</span>
         </div>
-        <div class="flex items-center gap-4 w-full sm:w-auto justify-between">
-          <span class="text-sm font-semibold text-gray-700">${item.price} MAD / mois</span>
-          <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 text-xs font-semibold cursor-pointer underline">Retirer</button>
+        <div class="cart-item-right">
+          <span class="cart-item-price">${item.price} MAD / mois</span>
+          <button onclick="removeFromCart('${item.id}')" class="remove-btn">Retirer</button>
         </div>
       `;
             selectionList.appendChild(itemEl);
@@ -127,14 +79,36 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        successMessage.classList.remove('hidden');
-        registrationForm.reset();
+        const nom = document.getElementById('nom').value;
+        const prenom = document.getElementById('prenom').value;
+        const tel = document.getElementById('tel').value;
+        const centre = document.getElementById('centre').value;
 
+        let coursesListHTML = cart.map(item => `<li>- ${item.title} (${item.price} MAD)</li>`).join('');
+        let totalCalc = cart.reduce((sum, item) => sum + item.price, 0);
+
+        summaryDetails.innerHTML = `
+      <p><strong>Nom & Prénom :</strong> ${nom} ${prenom}</p>
+      <p><strong>Téléphone :</strong> ${tel}</p>
+      <p><strong>Centre :</strong> ${centre}</p>
+      <div style="border-top: 1px solid #d1fae5; padding-top: 0.5rem; margin-top: 0.5rem;">
+        <p style="font-weight: bold;">Cours choisis :</p>
+        <ul style="list-style-type: disc; padding-left: 1rem;">${coursesListHTML}</ul>
+      </div>
+      <p style="font-weight: bold; padding-top: 0.25rem;">Total mensuel : ${totalCalc} MAD / mois</p>
+    `;
+
+        registrationForm.classList.add('hidden');
+        successCard.classList.remove('hidden');
+        successCard.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    resetAppBtn.addEventListener('click', () => {
         cart = [];
         updateCartUI();
-
-        setTimeout(() => {
-            successMessage.classList.add('hidden');
-        }, 6000);
+        registrationForm.reset();
+        registrationForm.classList.remove('hidden');
+        successCard.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });

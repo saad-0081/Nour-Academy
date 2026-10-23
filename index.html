@@ -3,108 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nour Academy</title>
-<
+<title>Nour Academy - Inscription et Soutien Scolaire</title>
+<meta name="description" content="Soutien scolaire et langues à Nador, du primaire au bac. Choisissez les cours de votre enfant et inscrivez-le en ligne.">
+<meta name="theme-color" content="#174C3C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23174C3C'/%3E%3Cpath d='M4 13l12-6 12 6-12 6z' fill='%23E8B95B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<a class="skip" href="#main">Aller au contenu</a>
+<noscript><p style="padding:16px;text-align:center">Activez JavaScript pour consulter les cours et vous inscrire.</p></noscript>
 
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 <symbol id="cap" viewBox="0 0 24 24"><path class="i" d="M2 9l10-5 10 5-10 5z"/><path class="i" d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path class="i" d="M22 9v6"/></symbol>
-<symbol id="pin" viewBox="0 0 24 24"><path class="i" d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.800 12 21 12 21z"/><circle class="i" cx="12" cy="9.500" r="2.500"/></symbol>
-<symbol id="calendar" viewBox="0 0 24 24"><rect class="i" x="3.500" y="5" width="17" height="15.500" rx="2.500"/><path class="i" d="M3.500 10h17M8 3v4M16 3v4"/></symbol>
-<symbol id="calc" viewBox="0 0 24 24"><rect class="i" x="5" y="3" width="14" height="18" rx="2.500"/><path class="i" d="M8.500 7.500h7M8.500 12h.01M12 12h.01M15.500 12h.01M8.500 16h.01M12 16h.01M15.500 16h.01"/></symbol>
-<symbol id="flask" viewBox="0 0 24 24"><path class="i" d="M9 3h6M10 3v6l-5.500 9.500A2 2 0 006.200 21.500h11.600a2 2 0 001.700-3L14 9V3"/><path class="i" d="M7.500 15h9"/></symbol>
-<symbol id="translate" viewBox="0 0 24 24"><path class="i" d="M4 5h9M8.500 3v2M6 5c.5 4 3 7 6 8.500M11.500 5c-.5 4-3.500 7.500-7.500 9"/><path class="i" d="M13 21l4.500-10 4.500 10M14.500 17.500h6"/></symbol>
-<symbol id="book" viewBox="0 0 24 24"><path class="i" d="M12 6.500C10 5 7 4.500 3.500 5v13c3.500-.5 6.500 0 8.500 1.500 2-1.500 5-2 8.500-1.500V5C17 4.500 14 5 12 6.500zM12 6.500v13"/></symbol>
-<symbol id="search" viewBox="0 0 24 24"><circle class="i" cx="11" cy="11" r="6.500"/><path class="i" d="M16 16l4.500 4.500"/></symbol>
-<symbol id="check" viewBox="0 0 24 24"><path class="i" d="M5 12.500l4.500 4.500L19 7.500"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path class="i" d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle class="i" cx="12" cy="9.5" r="2.5"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect class="i" x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path class="i" d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+<symbol id="math" viewBox="0 0 24 24"><rect class="i" x="5" y="3" width="14" height="18" rx="2.5"/><path class="i" d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></symbol>
+<symbol id="sci" viewBox="0 0 24 24"><path class="i" d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 006.2 21.5h11.6a2 2 0 001.7-3L14 9V3"/><path class="i" d="M7.5 15h9"/></symbol>
+<symbol id="lang" viewBox="0 0 24 24"><path class="i" d="M4 5h9M8.5 3v2M6 5c.5 4 3 7 6 8.5M11.5 5c-.5 4-3.5 7.5-7.5 9"/><path class="i" d="M13 21l4.5-10 4.5 10M14.5 17.5h6"/></symbol>
+<symbol id="book" viewBox="0 0 24 24"><path class="i" d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5zM12 6.5v13"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle class="i" cx="11" cy="11" r="6.5"/><path class="i" d="M16 16l4.5 4.5"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path class="i" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
 <symbol id="x" viewBox="0 0 24 24"><path class="i" d="M6 6l12 12M18 6L6 18"/></symbol>
-<symbol id="chevron" viewBox="0 0 24 24"><path class="i" d="M6 9l6 6 6-6"/></symbol>
+<symbol id="down" viewBox="0 0 24 24"><path class="i" d="M6 9l6 6 6-6"/></symbol>
+<symbol id="cart" viewBox="0 0 24 24"><path class="i" d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.4a2 2 0 002-1.5L20 8H6"/><circle class="i" cx="9.5" cy="20" r="1"/><circle class="i" cx="17" cy="20" r="1"/></symbol>
 <symbol id="menu" viewBox="0 0 24 24"><path class="i" d="M4 7h16M4 12h16M4 17h16"/></symbol>
-<symbol id="facebook" viewBox="0 0 24 24"><path class="i" d="M14 8.500h2.500V5H14a3.500 3.500 0 00-3.500 3.500V11H8v3.500h2.500V21H14v-6.500h2.500L17 11h-3V8.800c0-.2.100-.300.300-.300z"/></symbol>
-<symbol id="instagram" viewBox="0 0 24 24"><rect class="i" x="4" y="4" width="16" height="16" rx="4.500"/><circle class="i" cx="12" cy="12" r="3.500"/><circle cx="16.800" cy="7.200" r="1" fill="currentColor"/></symbol>
-<symbol id="youtube" viewBox="0 0 24 24"><rect class="i" x="3" y="6" width="18" height="12" rx="3.500"/><path d="M10.500 9.500v5l4.200-2.500z" fill="currentColor"/></symbol>
+<symbol id="fb" viewBox="0 0 24 24"><path class="i" d="M14 8.5h2.5V5H14a3.5 3.5 0 00-3.5 3.5V11H8v3.5h2.5V21H14v-6.5h2.5L17 11h-3V8.8c0-.2.1-.3.3-.3z"/></symbol>
+<symbol id="ig" viewBox="0 0 24 24"><rect class="i" x="4" y="4" width="16" height="16" rx="4.5"/><circle class="i" cx="12" cy="12" r="3.5"/><circle cx="16.8" cy="7.2" r="1" fill="currentColor"/></symbol>
+<symbol id="yt" viewBox="0 0 24 24"><rect class="i" x="3" y="6" width="18" height="12" rx="3.5"/><path d="M10.5 9.5v5l4.2-2.5z" fill="currentColor"/></symbol>
 </svg>
 
 <div class="wrap">
-<header>
- <a class="logo" href="#top"><svg class="sv" width="24" height="24" aria-hidden="true"><use href="#cap"/></svg> Nour Academy</a>
- <nav><a class="on" href="#top">Accueil</a><a href="#cours">Nos cours</a><a href="#why">À propos</a><a href="#contact">Contact</a></nav>
- <button class="btn gold" onclick="go('inscription')">Inscription</button>
- <button class="burger" aria-label="Menu" onclick="document.querySelector('nav').style.display=document.querySelector('nav').style.display==='flex'?'none':'flex'"><svg class="sv" width="24" height="24" aria-hidden="true"><use href="#menu"/></svg></button>
-</header>
+  <header class="hdr">
+    <a class="logo" href="#top" aria-label="Nour Academy, accueil"><svg class="sv" width="30" height="30" aria-hidden="true"><use href="#cap"/></svg><b>Nour</b><span>Academy</span></a>
+    <nav id="nav" aria-label="Navigation principale">
+      <a class="on" href="#top">Accueil</a>
+      <a href="#cours">Nos cours</a>
+      <a href="#why">À propos</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="#inscription">Inscription</a>
+    </nav>
+    <div class="hdr-r">
+      <button type="button" class="cart-btn" id="cartBtn" data-go="selection" aria-label="Ma sélection : aucun cours"><svg class="sv" width="24" height="24" aria-hidden="true"><use href="#cart"/></svg><span class="cart-n" id="cartN" hidden>0</span></button>
+      <button type="button" class="btn gold" data-go="inscription">Inscription</button>
+    </div>
+    <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg class="sv" width="28" height="28" aria-hidden="true"><use href="#menu"/></svg></button>
+  </header>
 
-<section class="hero" id="top">
- <div>
-  <div class="eyebrow">Soutien scolaire et langues à Nador</div>
-  <h1>La réussite commence ici.</h1>
-  <p>Trouvez le cours adapté au niveau et aux besoins de votre enfant.</p>
-  <button class="btn gold" onclick="go('cours')">Découvrir les cours</button>
- </div>
- <img class="hero-img" src="assets/hero-board.svg" alt="Apprendre aujourd’hui, réussir demain">
-</section>
+  <main id="main">
+  <section class="hero" id="top">
+    <div>
+      <div class="eyebrow">Soutien scolaire et langues à Nador</div>
+      <h1>La réussite commence ici.</h1>
+      <p>Trouvez le cours adapté au niveau et aux besoins de votre enfant.</p>
+      <button type="button" class="btn gold" data-go="cours">Découvrir les cours</button>
+    </div>
+    <svg class="illus" viewBox="0 0 460 260" role="img" aria-label="Salle de classe avec un tableau : Apprendre aujourd’hui, réussir demain">
+      <circle cx="380" cy="40" r="90" fill="#E8B95B" opacity=".12"/>
+      <rect x="40" y="28" width="250" height="130" rx="10" fill="#0F3A2D" stroke="#E8B95B" stroke-width="6"/>
+      <g font-family="Poppins,sans-serif" font-weight="600" font-size="22" fill="#fff" text-anchor="middle"><text x="165" y="72">Apprendre</text><text x="165" y="100">Aujourd’hui</text><text x="165" y="128">Réussir Demain</text></g>
+      <rect x="60" y="186" width="130" height="14" rx="2" fill="#E8B95B"/><rect x="68" y="172" width="112" height="14" rx="2" fill="#D9EEE2"/><rect x="64" y="158" width="118" height="14" rx="2" fill="#fff"/>
+      <rect y="200" width="460" height="60" fill="#8A6414"/><rect y="200" width="460" height="8" fill="#E8B95B"/>
+      <ellipse cx="357" cy="140" rx="14" ry="30" fill="#1E7D45"/><ellipse cx="385" cy="136" rx="14" ry="34" fill="#2E9A5B"/><ellipse cx="413" cy="142" rx="12" ry="28" fill="#1E7D45"/>
+      <rect x="400" y="170" width="38" height="34" rx="4" fill="#E8B95B"/>
+    </svg>
+  </section>
 
-<section class="filters" id="cours">
- <input id="q" type="search" placeholder="Rechercher un cours…" aria-label="Rechercher">
- <select id="lvl" aria-label="Niveau"><option value="">Tous les niveaux</option></select>
- <select id="sub" aria-label="Matière"><option value="">Toutes les matières</option></select>
- <span class="count" id="count"></span>
-</section>
+  <section class="filters" id="cours" aria-label="Filtres">
+    <div class="fld"><svg class="sv" width="20" height="20" aria-hidden="true"><use href="#search"/></svg><input id="q" type="search" placeholder="Rechercher un cours…" aria-label="Rechercher un cours"></div>
+    <div class="fld"><svg class="sv" width="20" height="20" aria-hidden="true"><use href="#cap"/></svg><select id="lvl" aria-label="Niveau"><option value="">Tous les niveaux</option></select></div>
+    <div class="fld"><svg class="sv" width="20" height="20" aria-hidden="true"><use href="#book"/></svg><select id="sub" aria-label="Matière"><option value="">Toutes les matières</option></select></div>
+    <span class="count" id="count" aria-live="polite">16 résultats</span>
+  </section>
 
-<section class="panel" id="selection">
- <h2>Ma sélection</h2>
- <div class="sel"><div id="selList"></div>
-  <div class="total"><small>Total mensuel</small><b id="total">0 MAD / mois</b>
-   <button class="btn full" id="finalize" onclick="go('inscription')">Finaliser mon inscription</button></div></div>
-</section>
+  <section class="panel" id="selection" aria-labelledby="t-sel">
+    <h2 id="t-sel">Ma sélection</h2>
+    <div class="sel">
+      <div id="selList"></div>
+      <div class="total">
+        <small>Total mensuel</small>
+        <strong id="total">0 MAD / mois</strong>
+        <button type="button" class="btn full" id="finalize" data-go="inscription" disabled>Finaliser mon inscription</button>
+      </div>
+    </div>
+  </section>
 
-<section class="grid" id="grid"></section>
+  <section class="grid" id="grid" aria-label="Liste des cours">
+    <article class="card">
+      <div class="row"><span class="badge">Primaire</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#math"></use></svg></span></div>
+      <h3>Mathématiques</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Lun. et Mer. · 17h</p>
+      <p class="price">250 MAD / mois</p>
+      <p class="status ok"><i></i>8 places restantes</p><button type="button" class="btn" data-add="1" aria-label="Choisir Mathématiques (Primaire) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Primaire</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#lang"></use></svg></span></div>
+      <h3>Français</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Hay Al Matar</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Mar. et Jeu. · 16h</p>
+      <p class="price">220 MAD / mois</p>
+      <p class="status ok"><i></i>6 places restantes</p><button type="button" class="btn" data-add="2" aria-label="Choisir Français (Primaire) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Primaire</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#lang"></use></svg></span></div>
+      <h3>Arabe</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Selouane</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Lun. et Mer. · 16h</p>
+      <p class="price">200 MAD / mois</p>
+      <p class="status err"><i></i>Complet</p><button type="button" class="btn" disabled="">Cours complet</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Collège</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#math"></use></svg></span></div>
+      <h3>Mathématiques</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Lun. et Mer. · 18h</p>
+      <p class="price">300 MAD / mois</p>
+      <p class="status ok"><i></i>5 places restantes</p><button type="button" class="btn" data-add="4" aria-label="Choisir Mathématiques (Collège) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Collège</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#sci"></use></svg></span></div>
+      <h3>Physique-Chimie</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Hay Al Matar</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Mar. et Jeu. · 18h</p>
+      <p class="price">320 MAD / mois</p>
+      <p class="status ok"><i></i>7 places restantes</p><button type="button" class="btn" data-add="5" aria-label="Choisir Physique-Chimie (Collège) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Collège</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#lang"></use></svg></span></div>
+      <h3>Anglais</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Selouane</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Sam. · 10h</p>
+      <p class="price">280 MAD / mois</p>
+      <p class="status ok"><i></i>4 places restantes</p><button type="button" class="btn" data-add="6" aria-label="Choisir Anglais (Collège) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Tronc commun</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#math"></use></svg></span></div>
+      <h3>Mathématiques</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Lun. et Mer. · 19h</p>
+      <p class="price">350 MAD / mois</p>
+      <p class="status ok"><i></i>6 places restantes</p><button type="button" class="btn" data-add="7" aria-label="Choisir Mathématiques (Tronc commun) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">1er Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#sci"></use></svg></span></div>
+      <h3>Physique-Chimie</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Hay Al Matar</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Mar. et Jeu. · 19h</p>
+      <p class="price">380 MAD / mois</p>
+      <p class="status warn"><i></i>3 dernières places</p><button type="button" class="btn" data-add="8" aria-label="Choisir Physique-Chimie (1er Bac) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">2e Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#math"></use></svg></span></div>
+      <h3>Mathématiques</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Lun. et Mer. · 20h</p>
+      <p class="price">450 MAD / mois</p>
+      <p class="status ok"><i></i>5 places restantes</p><button type="button" class="btn" data-add="9" aria-label="Choisir Mathématiques (2e Bac) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">2e Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#sci"></use></svg></span></div>
+      <h3>Physique-Chimie</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Selouane</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Mar. et Jeu. · 20h</p>
+      <p class="price">420 MAD / mois</p>
+      <p class="status err"><i></i>Complet</p><button type="button" class="btn" disabled="">Cours complet</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Tronc commun</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#lang"></use></svg></span></div>
+      <h3>Anglais intensif</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Hay Al Matar</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Sam. · 14h</p>
+      <p class="price">300 MAD / mois</p>
+      <p class="status ok"><i></i>9 places restantes</p><button type="button" class="btn" data-add="11" aria-label="Choisir Anglais intensif (Tronc commun) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">1er Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#lang"></use></svg></span></div>
+      <h3>Français avancé</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Ven. · 17h</p>
+      <p class="price">320 MAD / mois</p>
+      <p class="status ok"><i></i>4 places restantes</p><button type="button" class="btn" data-add="12" aria-label="Choisir Français avancé (1er Bac) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">1er Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#sci"></use></svg></span></div>
+      <h3>SVT</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Mer. · 14h</p>
+      <p class="price">350 MAD / mois</p>
+      <p class="status ok"><i></i>8 places restantes</p><button type="button" class="btn" data-add="13" aria-label="Choisir SVT (1er Bac) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">1er Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#math"></use></svg></span></div>
+      <h3>Informatique &amp; Algo</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Hay Al Matar</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Mar. · 18h</p>
+      <p class="price">400 MAD / mois</p>
+      <p class="status ok"><i></i>6 places restantes</p><button type="button" class="btn" data-add="14" aria-label="Choisir Informatique &amp; Algo (1er Bac) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">2e Bac</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#book"></use></svg></span></div>
+      <h3>Philosophie</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Selouane</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Ven. · 16h</p>
+      <p class="price">350 MAD / mois</p>
+      <p class="status warn"><i></i>2 dernières places</p><button type="button" class="btn" data-add="15" aria-label="Choisir Philosophie (2e Bac) ">Choisir ce cours</button></article>
+    <article class="card">
+      <div class="row"><span class="badge">Primaire</span><span class="sicon"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#lang"></use></svg></span></div>
+      <h3>Arabe &amp; Expression</h3>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#pin"></use></svg>Nador Centre</p>
+      <p class="meta"><svg class="sv" width="16" height="16" aria-hidden="true"><use href="#cal"></use></svg>Sam. · 14h</p>
+      <p class="price">250 MAD / mois</p>
+      <p class="status ok"><i></i>15 places restantes</p><button type="button" class="btn" data-add="16" aria-label="Choisir Arabe &amp; Expression (Primaire) ">Choisir ce cours</button></article>
+  </section>
+  <section class="empty" id="empty" hidden>
+    <svg width="160" height="120" viewBox="0 0 160 120" aria-hidden="true"><circle cx="80" cy="60" r="48" fill="#D9EEE2"/><rect x="48" y="36" width="42" height="52" rx="6" fill="#fff" stroke="#174C3C" stroke-width="3"/><circle cx="92" cy="68" r="16" fill="#fff" stroke="#174C3C" stroke-width="3"/><path d="M104 80l14 14" stroke="#E8B95B" stroke-width="6" stroke-linecap="round"/><circle cx="34" cy="30" r="5" fill="#E8B95B"/></svg>
+    <h3>Aucun cours ne correspond</h3>
+    <p>Essayez un autre niveau ou une autre matière.</p>
+    <button type="button" class="btn" data-act="reset-filters">Réinitialiser les filtres</button>
+  </section>
 
-<section class="panel" id="inscription">
- <div id="formBox">
-  <h2>Inscription</h2>
-  <p class="hint" style="font-size:13px">Tous les champs sont obligatoires. Les erreurs s’affichent pendant la saisie.</p>
-  <form class="form" id="form" novalidate>
-   <div class="f" data-f="name"><label for="name">Nom du parent</label><input id="name" autocomplete="name"><div class="hint"></div></div>
-   <div class="f" data-f="email"><label for="email">Email</label><input id="email" type="email" placeholder="nom@exemple.ma"><div class="hint">Exemple : nom@exemple.ma</div></div>
-   <div class="f" data-f="tel"><label for="tel">Téléphone</label><input id="tel" type="tel" placeholder="0612345678"><div class="hint">Exemple : 0612345678</div></div>
-   <div class="f" data-f="kid"><label for="kid">Prénom de l’élève</label><input id="kid" placeholder="Prénom de votre enfant"><div class="hint">Champ obligatoire</div></div>
-   <div class="f" data-f="lv"><label for="lv">Niveau de l’élève</label><select id="lv"><option value="">Choisir un niveau</option></select><div class="hint">Champ obligatoire</div></div>
-   <div class="f" data-f="pw"><label for="pw">Mot de passe</label><input id="pw" type="password" placeholder="Mot de passe"><div class="hint">8 caractères min., 1 majuscule, 1 chiffre, 1 caractère spécial</div></div>
-   <div class="f full" data-f="pw2"><label for="pw2">Confirmation du mot de passe</label><input id="pw2" type="password" placeholder="Retapez le mot de passe"><div class="hint">Doit être identique au mot de passe</div></div>
-   <label class="chk full"><input type="checkbox" id="cons"><span style="font-weight:400">J’accepte que Nour Academy utilise ces informations uniquement pour gérer l’inscription de mon enfant (loi 09-08). Je peux demander l’accès, la rectification ou la suppression de mes données à contact@nouracademy.ma.</span></label>
-   <button class="btn full" id="send" disabled>Envoyer mon inscription</button>
-  </form>
- </div>
- <div class="done" id="done">
-  <img src="assets/success.svg" alt="" width="110" height="110"><h2>Inscription envoyée</h2>
-  <div class="pill" id="ref"></div>
-  <div class="recap" id="recap"></div>
-  <p class="hint" style="max-width:420px;margin:0 auto 16px">Conservez ce numéro : il identifie votre dossier. Le formulaire et la sélection ont été réinitialisés.</p>
-  <button class="btn" onclick="resetAll()">Nouvelle inscription</button>
- </div>
-</section>
+  <section class="panel" id="inscription" aria-labelledby="t-ins">
+    <div id="formBox">
+      <h2 id="t-ins">Inscription</h2>
+      <p class="sub">Tous les champs sont obligatoires. Les erreurs s’affichent pendant la saisie.</p>
+      <form class="form" id="form" novalidate>
+        <div class="f" data-f="name"><label for="name">Nom du parent</label><div class="field"><input id="name" autocomplete="name"><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">Prénom et nom</div></div>
+        <div class="f" data-f="email"><label for="email">Email</label><div class="field"><input id="email" type="email" autocomplete="email" placeholder="nom@exemple.ma"><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">Exemple : nom@exemple.ma</div></div>
+        <div class="f" data-f="tel"><label for="tel">Téléphone</label><div class="field"><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78"><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">Format : 06 ou 07 + 8 chiffres, ou +212 6/7 + 8 chiffres</div></div>
+        <div class="f" data-f="kid"><label for="kid">Prénom de l’élève</label><div class="field"><input id="kid" placeholder="Prénom de votre enfant"><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">Champ obligatoire</div></div>
+        <div class="f sel-f" data-f="lv"><label for="lv">Niveau de l’élève</label><div class="field"><select id="lv"><option value="">Choisir un niveau</option></select><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">Champ obligatoire</div></div>
+        <div class="f" data-f="pw"><label for="pw">Mot de passe</label><div class="field"><input id="pw" type="password" autocomplete="new-password" placeholder="Mot de passe"><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">8 caractères min., 1 majuscule, 1 chiffre, 1 caractère spécial</div></div>
+        <div class="f full" data-f="pw2"><label for="pw2">Confirmation du mot de passe</label><div class="field"><input id="pw2" type="password" autocomplete="new-password" placeholder="Retapez le mot de passe"><svg class="st ck" aria-hidden="true"><use href="#check"/></svg><svg class="st xx" aria-hidden="true"><use href="#x"/></svg></div><div class="hint" aria-live="polite">Doit être identique au mot de passe</div></div>
+        <label class="chk full"><input type="checkbox" id="cons"><span>J’accepte que Nour Academy utilise ces informations uniquement pour gérer l’inscription de mon enfant (loi 09-08). Je peux demander l’accès, la rectification ou la suppression de mes données à contact@nouracademy.ma.</span></label>
+        <div class="full">
+          <button type="submit" class="btn full" id="send" disabled>Envoyer mon inscription</button>
+          <p class="hint note" id="sendNote" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+    <div class="done" id="done" hidden>
+      <svg width="160" height="120" viewBox="0 0 160 120" aria-hidden="true"><circle cx="80" cy="60" r="50" fill="#D9EEE2"/><circle cx="80" cy="60" r="30" fill="#1E7D45"/><path d="M66 61l10 10 19-20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="26" r="5" fill="#E8B95B"/><circle cx="128" cy="24" r="5" fill="#E8B95B"/><circle cx="112" cy="14" r="3.5" fill="#9DB8AB"/></svg>
+      <h2 id="doneTitle" tabindex="-1">Inscription envoyée</h2>
+      <div class="pill" id="ref"></div>
+      <dl class="recap" id="recap"></dl>
+      <p class="sub">Conservez ce numéro : il identifie votre dossier. Le formulaire et la sélection ont été réinitialisés.</p>
+      <button type="button" class="btn" data-act="new">Nouvelle inscription</button>
+    </div>
+  </section>
 
-<section class="why" id="why">
- <h2>Pourquoi Nour Academy ?</h2>
- <div class="stats">
-  <div class="stat"><div class="ic"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#cap"/></svg></div><div><b>1 400</b><small>élèves accompagnés chaque année</small></div></div>
-  <div class="stat"><div class="ic"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#pin"/></svg></div><div><b>3 centres</b><small>Nador Centre · Hay Al Matar · Selouane</small></div></div>
-  <div class="stat"><div class="ic"><svg class="sv" width="22" height="22" aria-hidden="true"><use href="#book"/></svg></div><div><b>Primaire → Bac</b><small>maths, sciences et langues</small></div></div>
- </div>
-</section>
+  <section class="panel" id="why" aria-labelledby="t-why">
+    <h2 id="t-why">Pourquoi Nour Academy ?</h2>
+    <div class="stats">
+      <div class="stat"><div class="ic"><svg class="sv" width="26" height="26" aria-hidden="true"><use href="#cap"/></svg></div><div><b>1 400</b><small>élèves accompagnés chaque année</small></div></div>
+      <div class="stat"><div class="ic"><svg class="sv" width="26" height="26" aria-hidden="true"><use href="#pin"/></svg></div><div><b>3 centres</b><small>Nador Centre · Hay Al Matar · Selouane</small></div></div>
+      <div class="stat"><div class="ic"><svg class="sv" width="26" height="26" aria-hidden="true"><use href="#book"/></svg></div><div><b>Primaire → Bac</b><small>maths, sciences et langues</small></div></div>
+    </div>
+  </section>
+  </main>
 
-<footer id="contact">
- <a class="logo" href="#top"><svg class="sv" width="24" height="24" aria-hidden="true"><use href="#cap"/></svg> Nour Academy</a>
- <p>Nador, Maroc<br>Centres : Nador Centre · Hay Al Matar · Selouane<br>© 2026 Nour Academy. Tous droits réservés.</p>
- <div class="soc"><span><svg class="sv" width="18" height="18" aria-hidden="true"><use href="#facebook"/></svg></span><span><svg class="sv" width="18" height="18" aria-hidden="true"><use href="#instagram"/></svg></span><span><svg class="sv" width="18" height="18" aria-hidden="true"><use href="#youtube"/></svg></span></div>
-</footer>
+  <footer id="contact">
+    <a class="logo" href="#top" aria-label="Nour Academy, haut de page"><svg class="sv" width="30" height="30" aria-hidden="true"><use href="#cap"/></svg><b>Nour</b><span>Academy</span></a>
+    <div class="infos"><p><strong>Nador, Maroc</strong></p><p>Centres : Nador Centre · Hay Al Matar · Selouane</p><p>© 2026 Nour Academy. Tous droits réservés.</p></div>
+    <div class="soc">
+      <a href="#" aria-label="Facebook"><svg class="sv" width="20" height="20" aria-hidden="true"><use href="#fb"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg class="sv" width="20" height="20" aria-hidden="true"><use href="#ig"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg class="sv" width="20" height="20" aria-hidden="true"><use href="#yt"/></svg></a>
+    </div>
+  </footer>
 </div>
 
-<div class="bar" id="bar"><div><span id="barN">0 cours</span><b id="barT">0 MAD / mois</b></div><button class="btn gold" onclick="go('selection')">Voir</button></div>
+<div class="bar" id="bar"><div><span id="barN">0 cours sélectionné</span><strong id="barT">0 MAD / mois</strong></div><button type="button" class="btn gold" data-go="selection">Voir</button></div>
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

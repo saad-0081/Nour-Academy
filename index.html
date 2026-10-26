@@ -1,566 +1,202 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nour Academy | Soutien scolaire</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nour Academy : cours de soutien du primaire au Bac à Nador et Selouane.">
+  <title>Nour Academy | Inscription aux cours</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <a href="#accueil" class="logo">Nour <span>Academy</span></a>
-        <nav>
-            <a href="#accueil">Accueil</a>
-            <a href="#catalogue">Nos cours</a>
-            <a href="#selection">Ma sélection</a>
-            <a href="#inscription">Inscription</a>
-        </nav>
-        <a href="#inscription" class="btn btn-gold">S'inscrire</a>
-    </header>
+  <a class="skip" href="#catalogue">Aller aux cours</a>
 
-    <main>
-        <section id="accueil" class="hero">
-            <div>
-                <span class="badge">Soutien scolaire au Maroc</span>
-                <h1>Apprendre aujourd'hui,<br><span>réussir demain.</span></h1>
-                <p>Des cours adaptés aux élèves du primaire, du collège et du lycée.</p>
-                <a href="#catalogue" class="btn btn-gold">Découvrir les cours</a>
-            </div>
-            <div class="hero-box">
-                <span></span>
-                <h2>Nour Academy</h2>
-                <p>Votre réussite, notre priorité</p>
-            </div>
-        </section>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#accueil">Nour <span>Academy</span></a>
+      <nav aria-label="Navigation principale">
+        <a href="#catalogue">Cours</a>
+        <a href="#selection">Ma sélection <span id="navCount">(0)</span></a>
+        <a href="#inscription">Inscription</a>
+      </nav>
+    </div>
+  </header>
 
-        <section id="catalogue" class="section">
-            <div class="section-heading">
-                <span class="eyebrow">Notre catalogue</span>
-                <h2>Choisissez vos cours</h2>
-                <p>Chaque cours peut être ajouté une seule fois à votre sélection.</p>
-            </div>
-
-            <div class="filters">
-                <input type="search" id="search" placeholder="Rechercher un cours...">
-                <select id="levelFilter">
-                    <option value="">Tous les niveaux</option>
-                    <option value="Primaire">Primaire</option>
-                    <option value="Collège">Collège</option>
-                    <option value="Lycée">Lycée</option>
+  <main>
+    <section class="hero" id="accueil" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <span class="eyebrow">Nador Centre · Hay Al Matar · Selouane</span>
+        <h1 id="heroTitle">Apprendre aujourd'hui,<br><em>réussir demain.</em></h1>
+        <p>Des cours de soutien adaptés à chaque niveau, du primaire au Bac. Trouvez votre cours et préparez votre dossier en quelques minutes.</p>
+        <a class="button gold" href="#catalogue">Découvrir les cours</a>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <span>✦</span>
+        <strong>NO<span>UR</span></strong>
+        <small>Votre réussite, notre priorité</small>
+      </div>
+    </section>
+    <section class="section" id="catalogue" aria-labelledby="catalogueTitle">
+      <div class="section-title">
+        <span class="eyebrow">Notre catalogue</span>
+        <h2 id="catalogueTitle">Choisissez vos cours</h2>
+        <p>Comparez les horaires, les prix et les places disponibles.</p>
+      </div>
+      <div class="filters">
+        <div class="filter">
+          <label for="search">Rechercher un cours</label>
+          <input id="search" type="search" placeholder="Ex. maths, physique…" autocomplete="off">
+        </div>
+        <div class="filter">
+          <label for="levelFilter">Niveau</label>
+          <select id="levelFilter">
+            <option value="">Tous les niveaux</option>
+            <option>Primaire</option>
+            <option>Collège</option>
+            <option>Lycée</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="subjectFilter">Matière</label>
+          <select id="subjectFilter">
+            <option value="">Toutes les matières</option>
+            <option>Mathématiques</option>
+            <option>Français</option>
+            <option>Anglais</option>
+            <option>SVT</option>
+            <option>Physique-Chimie</option>
+          </select>
+        </div>
+      </div>
+      <p id="resultCount" class="results" role="status" aria-live="polite"></p>
+      <div id="courseGrid" class="course-grid" aria-label="Catalogue des cours"></div>
+      <p id="noResults" class="notice" hidden>Aucun cours ne correspond à votre recherche. Essayez d'autres filtres.</p>
+    </section>
+    <section class="section selection-section" id="selection" aria-labelledby="selectionTitle">
+      <div class="section-title">
+        <span class="eyebrow">Votre panier</span>
+        <h2 id="selectionTitle">Ma sélection</h2>
+        <p>Un même cours ne peut être ajouté qu'une fois.</p>
+      </div>
+      <div class="selection-layout">
+        <div id="selectionList" class="selection-list" aria-live="polite">
+          <p class="notice">Aucun cours sélectionné.</p>
+        </div>
+        <aside class="total-box" aria-label="Récapitulatif du panier">
+          <span>Total mensuel</span>
+          <strong id="totalPrice">0 MAD / mois</strong>
+          <span id="selectedCount">0 cours sélectionné</span>
+          <button id="finalizeBtn" class="button primary" type="button" disabled>Finaliser mon inscription</button>
+        </aside>
+      </div>
+    </section>
+    <section class="section form-section" id="inscription" aria-labelledby="formTitle">
+      <div class="section-title">
+        <span class="eyebrow">Rejoignez-nous</span>
+        <h2 id="formTitle">Formulaire d'inscription</h2>
+        <p>Les champs marqués * sont obligatoires. Aucune donnée n'est transmise à un serveur.</p>
+      </div>
+      <div id="formContainer">
+        <div class="progress-head">
+          <span id="stepText">Étape 1 sur 2 — Responsable et élève</span>
+          <span id="stepPercent">50 %</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Progression de l'inscription" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" id="progressBar">
+          <span id="progressFill"></span>
+        </div>
+        <form id="registrationForm" novalidate>
+          <fieldset id="step1" class="form-step">
+            <legend>Informations du responsable et de l'élève</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="parentName">Nom et prénom du parent *</label>
+                <input id="parentName" name="parentName" autocomplete="name" aria-describedby="parentNameFeedback" required>
+                <small class="feedback" id="parentNameFeedback" aria-live="polite"></small>
+              </div>
+              <div class="field">
+                <label for="email">Adresse e-mail *</label>
+                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="emailFeedback" required>
+                <small class="feedback" id="emailFeedback" aria-live="polite"></small>
+              </div>
+              <div class="field">
+                <label for="phone">Téléphone marocain *</label>
+                <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0612345678" aria-describedby="phoneFeedback" required>
+                <small class="feedback" id="phoneFeedback" aria-live="polite"></small>
+              </div>
+              <div class="field">
+                <label for="studentName">Prénom de l'élève *</label>
+                <input id="studentName" name="studentName" autocomplete="off" aria-describedby="studentNameFeedback" required>
+                <small class="feedback" id="studentNameFeedback" aria-live="polite"></small>
+              </div>
+              <div class="field">
+                <label for="studentLevel">Niveau de l'élève *</label>
+                <select id="studentLevel" name="studentLevel" aria-describedby="studentLevelFeedback" required>
+                  <option value="">Choisir un niveau</option>
+                  <option>Primaire</option>
+                  <option>Collège</option>
+                  <option>Lycée</option>
                 </select>
-                <select id="subjectFilter">
-                    <option value="">Toutes les matières</option>
-                    <option value="Mathématiques">Mathématiques</option>
-                    <option value="Français">Français</option>
-                    <option value="Anglais">Anglais</option>
-                    <option value="SVT">SVT</option>
-                    <option value="Physique-Chimie">Physique-Chimie</option>
-                </select>
-                <strong id="courseCount">18 cours trouvés</strong>
+                <small class="feedback" id="studentLevelFeedback" aria-live="polite"></small>
+              </div>
             </div>
-
-            <div class="course-grid" id="courseGrid">
-                <article class="course-card" data-id="1" data-title="Mathématiques - Fondamentaux" data-subject="Mathématiques" data-level="Primaire" data-price="250">
-                    <span class="subject">Mathématiques</span>
-                    <h3>Mathématiques - Fondamentaux</h3>
-                    <p>Primaire</p>
-                    <strong>250 MAD / mois</strong>
-                    <small>10 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="2" data-title="Français - Lecture et rédaction" data-subject="Français" data-level="Primaire" data-price="250">
-                    <span class="subject">Français</span>
-                    <h3>Français - Lecture et rédaction</h3>
-                    <p>Primaire</p>
-                    <strong>250 MAD / mois</strong>
-                    <small>8 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="3" data-title="Mathématiques - Collège" data-subject="Mathématiques" data-level="Collège" data-price="300">
-                    <span class="subject">Mathématiques</span>
-                    <h3>Mathématiques - Collège</h3>
-                    <p>Collège</p>
-                    <strong>300 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="4" data-title="Physique-Chimie - Collège" data-subject="Physique-Chimie" data-level="Collège" data-price="300">
-                    <span class="subject">Physique-Chimie</span>
-                    <h3>Physique-Chimie - Collège</h3>
-                    <p>Collège</p>
-                    <strong>300 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="5" data-title="SVT - Collège" data-subject="SVT" data-level="Collège" data-price="300">
-                    <span class="subject">SVT</span>
-                    <h3>SVT - Collège</h3>
-                    <p>Collège</p>
-                    <strong>300 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="6" data-title="Français - Expression écrite" data-subject="Français" data-level="Collège" data-price="300">
-                    <span class="subject">Français</span>
-                    <h3>Français - Expression écrite</h3>
-                    <p>Collège</p>
-                    <strong>300 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="7" data-title="Anglais - Débutant" data-subject="Anglais" data-level="Collège" data-price="250">
-                    <span class="subject">Anglais</span>
-                    <h3>Anglais - Débutant</h3>
-                    <p>Collège</p>
-                    <strong>250 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="8" data-title="Mathématiques - Tronc commun" data-subject="Mathématiques" data-level="Lycée" data-price="350">
-                    <span class="subject">Mathématiques</span>
-                    <h3>Mathématiques - Tronc commun</h3>
-                    <p>Lycée</p>
-                    <strong>350 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="9" data-title="Physique-Chimie - Tronc commun" data-subject="Physique-Chimie" data-level="Lycée" data-price="350">
-                    <span class="subject">Physique-Chimie</span>
-                    <h3>Physique-Chimie - Tronc commun</h3>
-                    <p>Lycée</p>
-                    <strong>350 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="10" data-title="SVT - Tronc commun" data-subject="SVT" data-level="Lycée" data-price="350">
-                    <span class="subject">SVT</span>
-                    <h3>SVT - Tronc commun</h3>
-                    <p>Lycée</p>
-                    <strong>350 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="11" data-title="Mathématiques - 1ère Bac" data-subject="Mathématiques" data-level="Lycée" data-price="350">
-                    <span class="subject">Mathématiques</span>
-                    <h3>Mathématiques - 1ère Bac</h3>
-                    <p>Lycée</p>
-                    <strong>350 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="12" data-title="Physique-Chimie - 1ère Bac" data-subject="Physique-Chimie" data-level="Lycée" data-price="350">
-                    <span class="subject">Physique-Chimie</span>
-                    <h3>Physique-Chimie - 1ère Bac</h3>
-                    <p>Lycée</p>
-                    <strong>350 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="13" data-title="SVT - 1ère Bac" data-subject="SVT" data-level="Lycée" data-price="350">
-                    <span class="subject">SVT</span>
-                    <h3>SVT - 1ère Bac</h3>
-                    <p>Lycée</p>
-                    <strong>350 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="14" data-title="Anglais - Conversation" data-subject="Anglais" data-level="Lycée" data-price="300">
-                    <span class="subject">Anglais</span>
-                    <h3>Anglais - Conversation</h3>
-                    <p>Lycée</p>
-                    <strong>300 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="15" data-title="Français - Préparation aux examens" data-subject="Français" data-level="Lycée" data-price="400">
-                    <span class="subject">Français</span>
-                    <h3>Français - Préparation aux examens</h3>
-                    <p>Lycée</p>
-                    <strong>400 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="16" data-title="Mathématiques - 2ème Bac" data-subject="Mathématiques" data-level="Lycée" data-price="400">
-                    <span class="subject">Mathématiques</span>
-                    <h3>Mathématiques - 2ème Bac</h3>
-                    <p>Lycée</p>
-                    <strong>400 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="17" data-title="Physique-Chimie - 2ème Bac" data-subject="Physique-Chimie" data-level="Lycée" data-price="400">
-                    <span class="subject">Physique-Chimie</span>
-                    <h3>Physique-Chimie - 2ème Bac</h3>
-                    <p>Lycée</p>
-                    <strong>400 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-                <article class="course-card" data-id="18" data-title="SVT - 2ème Bac" data-subject="SVT" data-level="Lycée" data-price="400">
-                    <span class="subject">SVT</span>
-                    <h3>SVT - 2ème Bac</h3>
-                    <p>Lycée</p>
-                    <strong>400 MAD / mois</strong>
-                    <small>20 places disponibles</small>
-                    <button type="button" class="btn btn-green choose-btn">Choisir ce cours</button>
-                </article>
-            </div>
-            <p id="noResults" class="empty-message" hidden>Aucun cours trouvé.</p>
-        </section>
-
-        <section id="selection" class="section selection-section">
-            <div class="section-heading">
-                <span class="eyebrow">Votre panier</span>
-                <h2>Ma sélection</h2>
-            </div>
-            <div class="selection-layout">
-                <div id="selectionList" class="selection-list">
-                    <p class="empty-message">Aucun cours sélectionné.</p>
+            <button id="nextBtn" class="button primary step-button" type="button">Continuer →</button>
+          </fieldset>
+          <fieldset id="step2" class="form-step" hidden>
+            <legend>Sécurité et consentement</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="password">Mot de passe *</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="passwordFeedback passwordStrength" required>
+                <small class="feedback" id="passwordFeedback" aria-live="polite"></small>
+                <div class="strength-track" aria-hidden="true">
+                  <span id="strengthFill"></span>
                 </div>
-                <div class="total-box">
-                    <p>Total mensuel</p>
-                    <strong id="totalPrice">0 MAD / mois</strong>
-                    <button type="button" id="finalizeBtn" class="btn btn-green" disabled>Finaliser mon inscription</button>
-                </div>
+                <small id="passwordStrength">Robustesse : non évaluée</small>
+              </div>
+              <div class="field">
+                <label for="confirmPassword">Confirmer le mot de passe *</label>
+                <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" aria-describedby="confirmPasswordFeedback" required>
+                <small class="feedback" id="confirmPasswordFeedback" aria-live="polite"></small>
+              </div>
             </div>
-        </section>
-
-        <section id="inscription" class="section form-section">
-            <div id="formContainer">
-                <div class="section-heading">
-                    <span class="eyebrow">Rejoignez-nous</span>
-                    <h2>Formulaire d'inscription</h2>
-                    <p>Complétez vos informations après avoir choisi vos cours.</p>
-                </div>
-                <form id="registrationForm" novalidate>
-                    <div class="form-grid">
-                        <div class="field">
-                            <label for="parentName">Nom et prénom du parent</label>
-                            <input type="text" id="parentName" placeholder="Mohamed Amine" required>
-                            <span class="error" id="parentNameError"></span>
-                        </div>
-                        <div class="field">
-                            <label for="email">Adresse Gmail</label>
-                            <input type="email" id="email" placeholder="exemple@gmail.com" required>
-                            <span class="error" id="emailError"></span>
-                        </div>
-                        <div class="field">
-                            <label for="phone">Téléphone marocain</label>
-                            <input type="tel" id="phone" placeholder="0612345678 ou +212612345678" required>
-                            <span class="error" id="phoneError"></span>
-                        </div>
-                        <div class="field">
-                            <label for="studentName">Prénom de l'élève</label>
-                            <input type="text" id="studentName" placeholder="Yassine" required>
-                            <span class="error" id="studentNameError"></span>
-                        </div>
-                        <div class="field">
-                            <label for="studentLevel">Niveau scolaire</label>
-                            <select id="studentLevel" required>
-                                <option value="">Choisir un niveau</option>
-                                <option value="Primaire">Primaire</option>
-                                <option value="Collège">Collège</option>
-                                <option value="Lycée">Lycée</option>
-                            </select>
-                            <span class="error" id="studentLevelError"></span>
-                        </div>
-                        <div class="field">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" id="password" placeholder="Exemple : Nour@2026" required>
-                            <span class="error" id="passwordError"></span>
-                        </div>
-                        <div class="field full">
-                            <label for="confirmPassword">Confirmer le mot de passe</label>
-                            <input type="password" id="confirmPassword" required>
-                            <span class="error" id="confirmPasswordError"></span>
-                        </div>
-                    </div>
-                    <label class="checkbox-line">
-                        <input type="checkbox" id="acceptTerms">
-                        J'accepte les conditions d'inscription.
-                    </label>
-                    <p id="formMessage" class="form-message" role="status"></p>
-                    <button type="submit" class="btn btn-green submit-btn">Envoyer mon inscription</button>
-                </form>
+            <div class="consent">
+              <input type="checkbox" id="consent" name="consent" aria-describedby="consentInfo consentFeedback">
+              <label for="consent">J'accepte le traitement des données indiquées pour préparer mon dossier d'inscription. *</label>
             </div>
-
-            <div id="confirmation" class="confirmation" hidden>
-                <h2>Inscription validée ✓</h2>
-                <p id="confirmationReference"></p>
-                <div id="confirmationDetails"></div>
-                <p>Ceci est une démonstration. Aucune donnée n'est envoyée à un serveur.</p>
-                <button type="button" id="resetBtn" class="btn btn-green">Nouvelle inscription</button>
+            <p id="consentInfo" class="privacy">Information Loi 09-08 : cette démonstration traite les données uniquement dans votre navigateur, sans envoi ni stockage permanent. Pour une version réelle, compléter cette mention avec l'identité du responsable de traitement, les finalités, la durée de conservation et les modalités d'exercice des droits conformément aux exigences applicables.</p>
+            <small class="feedback" id="consentFeedback" aria-live="polite"></small>
+            <div class="step-actions">
+              <button id="backBtn" class="button secondary" type="button">← Retour</button>
+              <button class="button primary" type="submit">Valider mon inscription</button>
             </div>
-        </section>
-    </main>
+          </fieldset>
+          <p id="formMessage" class="form-message" role="alert" aria-live="assertive"></p>
+        </form>
+      </div>
+      <div id="confirmation" class="confirmation" hidden tabindex="-1">
+        <span class="success-icon" aria-hidden="true">✓</span>
+        <h3>Dossier préparé avec succès</h3>
+        <p id="confirmationReference"></p>
+        <div id="confirmationDetails"></div>
+        <p class="privacy">Ceci est un récapitulatif de démonstration. Aucune inscription réelle n'a été envoyée ni enregistrée.</p>
+        <button id="newRegistrationBtn" class="button primary" type="button">Préparer un autre dossier</button>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-        <strong>Nour Academy</strong>
-        <p>© 2026 Nour Academy — Soutien scolaire</p>
-    </footer>
+  <footer class="site-footer">
+    <strong>Nour Academy</strong>
+    <span>Nador Centre · Hay Al Matar · Selouane</span>
+    <span>© 2026 Nour Academy — Démonstration pédagogique</span>
+  </footer>
 
-    <button type="button" id="floatingCart" class="floating-cart">
-        Ma sélection : <span id="cartCount">0</span> cours →
-    </button>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const selectedCourses = new Map();
-            const cards = Array.from(document.querySelectorAll(".course-card"));
-            const selectionList = document.getElementById("selectionList");
-            const totalPrice = document.getElementById("totalPrice");
-            const cartCount = document.getElementById("cartCount");
-            const finalizeBtn = document.getElementById("finalizeBtn");
-
-            const get = id => document.getElementById(id);
-
-            function updateSelection() {
-                selectionList.replaceChildren();
-                let total = 0;
-
-                selectedCourses.forEach(function (course, id) {
-                    total += course.price;
-
-                    const item = document.createElement("div");
-                    item.className = "selection-item";
-
-                    const info = document.createElement("div");
-                    info.className = "selection-info";
-
-                    const title = document.createElement("strong");
-                    title.textContent = course.title;
-
-                    const level = document.createElement("small");
-                    level.textContent = "Niveau : " + course.level;
-
-                    const price = document.createElement("strong");
-                    price.className = "selection-price";
-                    price.textContent = course.price + " MAD / mois";
-
-                    const remove = document.createElement("button");
-                    remove.type = "button";
-                    remove.className = "remove-btn";
-                    remove.textContent = "Retirer";
-
-                    remove.addEventListener("click", function () {
-                        selectedCourses.delete(id);
-                        updateSelection();
-                    });
-
-                    info.append(title, level);
-                    item.append(info, price, remove);
-                    selectionList.appendChild(item);
-                });
-
-                if (selectedCourses.size === 0) {
-                    const empty = document.createElement("p");
-                    empty.className = "empty-message";
-                    empty.textContent = "Aucun cours sélectionné.";
-                    selectionList.appendChild(empty);
-                }
-
-                totalPrice.textContent = total + " MAD / mois";
-                finalizeBtn.disabled = selectedCourses.size === 0;
-                cartCount.textContent = selectedCourses.size;
-
-                cards.forEach(function (card) {
-                    const button = card.querySelector(".choose-btn");
-                    const chosen = selectedCourses.has(card.dataset.id);
-                    button.disabled = chosen;
-                    button.textContent = chosen ? "Déjà sélectionné ✓" : "Choisir ce cours";
-                });
-            }
-
-            cards.forEach(function (card) {
-                card.querySelector(".choose-btn").addEventListener("click", function () {
-                    const id = card.dataset.id;
-
-                    if (selectedCourses.has(id)) {
-                        return;
-                    }
-
-                    selectedCourses.set(id, {
-                        title: card.dataset.title,
-                        level: card.dataset.level,
-                        price: Number(card.dataset.price)
-                    });
-
-                    updateSelection();
-                    get("selection").scrollIntoView({ behavior: "smooth", block: "start" });
-                });
-            });
-
-            function normalize(text) {
-                return String(text).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            }
-
-            function filterCourses() {
-                const search = normalize(get("search").value);
-                const level = get("levelFilter").value;
-                const subject = get("subjectFilter").value;
-                let count = 0;
-
-                cards.forEach(function (card) {
-                    const text = normalize(card.dataset.title + " " + card.dataset.subject + " " + card.dataset.level);
-                    const visible = text.includes(search) &&
-                        (!level || card.dataset.level === level) &&
-                        (!subject || card.dataset.subject === subject);
-
-                    card.hidden = !visible;
-                    if (visible) count++;
-                });
-
-                get("courseCount").textContent = count + (count === 1 ? " cours trouvé" : " cours trouvés");
-                get("noResults").hidden = count !== 0;
-            }
-
-            get("search").addEventListener("input", filterCourses);
-            get("levelFilter").addEventListener("change", filterCourses);
-            get("subjectFilter").addEventListener("change", filterCourses);
-
-            finalizeBtn.addEventListener("click", function () {
-                get("inscription").scrollIntoView({ behavior: "smooth" });
-            });
-
-            get("floatingCart").addEventListener("click", function () {
-                get("selection").scrollIntoView({ behavior: "smooth" });
-            });
-
-            const rules = {
-                parentName: /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u,
-                studentName: /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u,
-                email: /^[a-zA-Z0-9._%+-]+@gmail\.com$/i,
-                phone: /^(?:0[567]\d{8}|\+212[567]\d{8})$/,
-                password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{8,}$/
-            };
-
-            const errors = {
-                parentName: "Veuillez saisir un nom valide avec des lettres uniquement.",
-                studentName: "Veuillez saisir un prénom valide.",
-                email: "Veuillez saisir une adresse Gmail valide.",
-                phone: "Numéro marocain invalide. Exemple : 0612345678.",
-                studentLevel: "Veuillez choisir un niveau scolaire.",
-                password: "Minimum 8 caractères avec majuscule, minuscule, chiffre et symbole.",
-                confirmPassword: "Les mots de passe ne correspondent pas."
-            };
-
-            const fieldIds = [
-                "parentName", "email", "phone", "studentName",
-                "studentLevel", "password", "confirmPassword"
-            ];
-
-            function validateField(id) {
-                const input = get(id);
-                const value = input.value.trim();
-                let valid;
-
-                if (id === "studentLevel") {
-                    valid = value !== "";
-                } else if (id === "confirmPassword") {
-                    valid = value !== "" && value === get("password").value;
-                } else if (id === "password") {
-                    valid = rules.password.test(input.value);
-                } else {
-                    valid = rules[id].test(value);
-                }
-
-                input.classList.toggle("invalid", !valid);
-                get(id + "Error").textContent = valid ? "" : errors[id];
-                return valid;
-            }
-
-            fieldIds.forEach(function (id) {
-                const input = get(id);
-
-                input.addEventListener("blur", function () {
-                    validateField(id);
-                });
-
-                input.addEventListener("input", function () {
-                    if (input.classList.contains("invalid")) {
-                        validateField(id);
-                    }
-
-                    if (id === "password" && get("confirmPassword").value) {
-                        validateField("confirmPassword");
-                    }
-
-                    get("formMessage").textContent = "";
-                });
-            });
-
-            get("registrationForm").addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                const allValid = fieldIds.map(validateField).every(Boolean);
-                const message = get("formMessage");
-
-                if (!allValid) {
-                    message.textContent = "Veuillez corriger les informations indiquées en rouge.";
-                    return;
-                }
-
-                if (selectedCourses.size === 0) {
-                    message.textContent = "Veuillez choisir au moins un cours avant de vous inscrire.";
-                    get("selection").scrollIntoView({ behavior: "smooth" });
-                    return;
-                }
-
-                if (!get("acceptTerms").checked) {
-                    message.textContent = "Veuillez accepter les conditions d'inscription.";
-                    return;
-                }
-
-                const details = [
-                    ["Parent", get("parentName").value.trim()],
-                    ["Email", get("email").value.trim()],
-                    ["Téléphone", get("phone").value.trim()],
-                    ["Élève", get("studentName").value.trim()],
-                    ["Niveau", get("studentLevel").value],
-                    ["Cours sélectionnés", Array.from(selectedCourses.values()).map(c => c.title).join(", ")],
-                    ["Total mensuel", get("totalPrice").textContent]
-                ];
-
-                const container = get("confirmationDetails");
-                container.replaceChildren();
-
-                details.forEach(function ([label, value]) {
-                    const row = document.createElement("p");
-                    const strong = document.createElement("strong");
-                    strong.textContent = label + " : ";
-                    row.append(strong, document.createTextNode(value));
-                    container.appendChild(row);
-                });
-
-                get("confirmationReference").textContent =
-                    "Référence de démonstration : NA-" + Math.floor(100000 + Math.random() * 900000);
-
-                message.textContent = "";
-                get("formContainer").hidden = true;
-                get("confirmation").hidden = false;
-                get("confirmation").scrollIntoView({ behavior: "smooth" });
-            });
-
-            get("resetBtn").addEventListener("click", function () {
-                get("registrationForm").reset();
-
-                fieldIds.forEach(function (id) {
-                    get(id).classList.remove("invalid");
-                    get(id + "Error").textContent = "";
-                });
-
-                get("formMessage").textContent = "";
-                selectedCourses.clear();
-                updateSelection();
-
-                get("confirmation").hidden = true;
-                get("formContainer").hidden = false;
-                get("inscription").scrollIntoView({ behavior: "smooth" });
-            });
-
-            updateSelection();
-            filterCourses();
-        });
-    </script>
+  <dialog id="courseDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-head">
+      <h2 id="dialogTitle">Détail du cours</h2>
+      <button id="closeDialog" class="icon-button" type="button" aria-label="Fermer la fenêtre">✕</button>
+    </div>
+    <div id="dialogBody"></div>
+    <button id="dialogChoose" class="button primary" type="button">Choisir ce cours</button>
+  </dialog>
 </body>
 </html>
